@@ -25,3 +25,13 @@ const observer = new IntersectionObserver(
 document.querySelectorAll(".from-top, .from-bottom, .from-out, .text-about").forEach((el) => {
   observer.observe(el);
 });
+
+
+// Hapus margin tambahan, biarkan inline-flex handle spacing
+const ScrollAnimation = document.querySelector(".scroll-infinite").cloneNode(true);
+const ScrollAnimationReverse = document.querySelector(".scroll-infinite-right").cloneNode(true);
+
+const containers = document.querySelectorAll(".container-gallery");
+if (containers[0]) containers[0].appendChild(ScrollAnimation);
+if (containers[1]) containers[1].appendChild(ScrollAnimationReverse);
+

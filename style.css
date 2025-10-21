@@ -16,7 +16,7 @@ html {
   opacity: 0;
   filter: blur(5px);
   will-change: transform;
-  transition: transform 3s ease, opacity 1s ease, filter 3s;
+  transition: transform 2s ease, opacity 2s ease, filter 2s;
 }
 
 .from-top.show {
@@ -29,7 +29,7 @@ html {
   transform: translateY(100px);
   filter: blur(5px);
   will-change: transform, filter;
-  transition: transform 3s ease, filter 2s ease;
+  transition: transform 2s ease, filter 2s ease;
 }
 
 .from-bottom.show {
@@ -50,29 +50,35 @@ html {
 }
 
 .header-main {
-  /*background: rgba(255, 255, 255, 0.2);*/
-  background: rgba(176, 104, 77, 0.5);
+  background: rgba(176, 104, 77, 0.6);
   position: fixed;
   top: 20px;
-  left: 25%;
-  right: 25%;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
   border-radius: 30px;
+  border: 2px solid white;
   color: white;
   display: flex;
-  padding: 0.5rem 0;
-  padding-inline: 20px;
-  justify-content: space-between;
+  gap: 15px;
   align-items: center;
+  padding: 0.6rem 0;
+  padding-inline: 20px;
   z-index: 1000;
 }
 
-.header-main h1 {
+/* .header-main h1 {
   font-family: "Lavishly Yours", cursive;
   font-weight: 600;
   font-size: 20px;
-  font-style: normal;
   position: relative;
   padding-bottom: 2px;
+} */
+
+.header-main img {
+  width: 65px;
+  height: 35px;
 }
 
 .header-main h1::after {
@@ -87,13 +93,13 @@ html {
 
 .nav-main {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .nav-main a {
   text-decoration: none;
   color: white;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 10px;
   transition: background 0.5s ease;
 }
@@ -102,53 +108,73 @@ html {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* HERO SECTION */
 .container-hero {
   position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+
+}
+
+.container-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 90%, black 100%);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.bg-hero {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.container-hero h1 {
+  font-size: 5.5rem;
+  white-space: nowrap;
+  color: white;
+  text-align: center;
+  position: relative;
+  top: -15%;
+  font-family: "Krona One", sans-serif;
+  font-style: normal;
+  font-weight: bolder;
+  margin: 0;
+  z-index: 3;
 }
 
 .gambar-akane {
   position: absolute;
-  left: 25%;
   bottom: 0;
-  height: 480px;
-  width: 480px;
-  z-index: 2;
-}
-
-.bg-hero {
-  height: 100%;
-  width: 100%;
-}
-
-.container-hero h1 {
-  position: absolute;
-  top: 20%;
-  left: 8%;
-  font-size: 5rem;
-  white-space: nowrap;
-  color: white;
-  font-family: "BBH Sans Hegarty", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  left: 28%;
+  height: 580px;
+  width: 580px;
+  z-index: 5;
 }
 
 .text-about {
   position: absolute;
-  top: 55%;
-  max-width: 300px;
-  transform: scale(0.7) translateX(20%);
-  background: rgba(0, 0, 0, 0.2);
+  left: 10%;
+  bottom: 15%;
+  margin-top: 1rem;
+  max-width: 320px;
+  background: rgba(0, 0, 0, 0.1);
   color: white;
   backdrop-filter: blur(20px);
   padding: 15px;
   border-radius: 10px;
   filter: blur(5px);
-  transition: filter 2s ease, box-shadow 1s ease;
-}
-
-.text-about.show {
-  filter: blur(0);
-  box-shadow: 2px 6px 30px #0A0E39;
+  z-index: 3;
 }
 
 /* GALLERY */
@@ -163,39 +189,49 @@ html {
   text-align: center;
   font-size: 4rem;
   position: relative;
-  padding-bottom: 5px;
+  width: fit-content;
 }
 
 .h1-section::after {
   content: '';
   position: absolute;
+  left: 0;
   bottom: 0;
-  left: 50%;
-  height: 2px;
-  background: aqua;
+  width: 100%;
+  height: 5px;
+  border-radius: 30px;
+  background: rgb(0, 102, 185);
 }
 
 .container-gallery {
   width: 100%;
   display: flex;
+  gap: 25px;
   white-space: nowrap;
   overflow: hidden;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .scroll-infinite {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 120s linear infinite;
+}
+
+.scroll-infinite-right {
+  display: inline-flex;
+  gap: 25px;
+  white-space: nowrap;
+  animation: scroll-right 60s linear infinite;
 }
 
 @keyframes scroll-left {
   from {
     transform: translateX(0);
   }
-  
+
   to {
     transform: translateX(-50%);
   }
@@ -205,7 +241,7 @@ html {
   from {
     transform: translateX(-50%);
   }
-  
+
   to {
     transform: translateX(0);
   }
@@ -221,4 +257,18 @@ html {
   border-radius: 20px;
   color: white;
   font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.inner-img:hover {
+  transform: scale(1.08);
+}
+
+.inner-img img {
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
 }
