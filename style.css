@@ -49,6 +49,19 @@ html {
   opacity: 1;
 }
 
+.from-left {
+  transform: translateX(-25%);
+  opacity: 0;
+  filter: blur(5px);
+  transition: all 1s ease;
+}
+
+.from-left.show {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
+}
+
 .header-main {
   background: rgba(176, 104, 77, 0.6);
   position: fixed;
@@ -67,14 +80,6 @@ html {
   padding-inline: 20px;
   z-index: 1000;
 }
-
-/* .header-main h1 {
-  font-family: "Lavishly Yours", cursive;
-  font-weight: 600;
-  font-size: 20px;
-  position: relative;
-  padding-bottom: 2px;
-} */
 
 .header-main img {
   width: 65px;
@@ -140,15 +145,22 @@ html {
 }
 
 .container-hero h1 {
-  font-size: 5.5rem;
+  font-size: 6rem;
   white-space: nowrap;
   color: white;
   text-align: center;
   position: relative;
   top: -15%;
-  font-family: "Krona One", sans-serif;
+
+  font-family: "Bitcount Grid Single", system-ui;
+  font-optical-sizing: auto;
   font-style: normal;
-  font-weight: bolder;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0;
+
   margin: 0;
   z-index: 3;
 }
@@ -184,23 +196,31 @@ html {
   font-weight: bold;
 }
 
+.div-h1-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .h1-section {
   color: white;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3.5rem;
   position: relative;
   width: fit-content;
+
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: italic;
 }
 
 .h1-section::after {
-  content: '';
+  content: '@Class no Daikirai.';
+  font-size: 12px;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 5px;
-  border-radius: 30px;
-  background: rgb(0, 102, 185);
 }
 
 .container-gallery {
@@ -271,4 +291,110 @@ html {
   width: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+/* About */
+.about {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-about {
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.card {
+  width: 260px;
+  background: black;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 5px;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.animasi-rotate {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 150%;
+  background: linear-gradient(to bottom, rgb(51, 36, 255), rgb(36, 131, 255));
+  z-index: -1;
+  animation: rotate 3s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.card-image {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+  transition: all 0.3s ease;
+}
+
+.card-fill {
+  padding: 10px;
+  background: black;
+  border-radius: 0 0 20px 20px;
+}
+
+.card-fill h1 {
+  color: white;
+  font-size: 22px
+}
+
+.card-fill p {
+  font-size: 12px;
+  color: white;
+}
+
+.card-mark {
+  padding: 10px 0;
+  border-radius: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.card-mark span {
+  font-size: 12px;
+  color: white;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.card-mark span:hover {
+  background: rgba(255, 255, 255, 0.10);
 }
