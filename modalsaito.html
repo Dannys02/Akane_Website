@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Saito Modal</title>
     <style>
-        /* ===== RESET & BODY ===== */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,8 +22,8 @@
             overflow: hidden;
         }
 
-        /* ===== CONTAINER ===== */
         .container-modal {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -37,10 +36,31 @@
             width: 100%;
             color: white;
             backdrop-filter: blur(10px);
-            animation: fadeIn 0.8s ease forwards;
+            animation: scale 0.3s ease;
         }
 
-        /* ===== IMAGE SECTION ===== */
+        @keyframes scale {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 25px;
+            top: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
         .image {
             flex: 1;
             display: flex;
@@ -55,14 +75,14 @@
             border-radius: 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
 
         .image img:hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
-        /* ===== TEXT SECTION ===== */
         .info {
             flex: 1.2;
         }
@@ -72,6 +92,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: 1px;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            z-index: 0;
         }
 
         .info h4 {
@@ -87,37 +108,61 @@
             margin-bottom: 1.5rem;
         }
 
-        .btn {
+        .container-btn {
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
+            border-radius: 7px;
+            transition: all 0.3s ease;
+        }
+
+        .container-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .rotate {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 130%;
+            height: 65%;
+            z-index: 2;
             background: linear-gradient(135deg, #6670ff, #ff5eff);
-            border: none;
+            animation: rotate 3s infinite linear;
+        }
+
+        .btn {
+            background: rgb(87, 0, 201);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
+            height: 35px;
+            width: 120px;
+            margin: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
             font-size: 0.9rem;
+            position: relative;
             cursor: pointer;
+            z-index: 5;
             transition: 0.3s ease;
-            /* box-shadow: 0 3px 10px rgba(255, 100, 80, 0.4); */
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 18px #6670ff;
+        .btn span {
+            position: relative;
+            z-index: 10;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeIn {
+        @keyframes rotate {
             from {
-                opacity: 0;
-                transform: translateY(30px);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
 
             to {
-                opacity: 1;
-                transform: translateY(0);
+                transform: translate(-50%, -50%) rotate(360deg);
             }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container-modal {
                 flex-direction: column;
@@ -143,6 +188,7 @@
 <body>
 
     <div class="container-modal">
+        <button class="close-btn">✖</button>
         <div class="image">
             <img src="assets/saito.jfif" alt="Modal Saito">
         </div>
@@ -156,7 +202,12 @@
                 not bothering to wash dishes until they piled up, taking garbage out once per month, and even
                 questioning the need for bathing.
             </p>
-            <button class="btn">Lihat Detail</button>
+            <div class="container-btn">
+                <div class="btn">
+                    <span>View Details</span>
+                </div>
+                <div class="rotate"></div>
+            </div>
         </div>
     </div>
 

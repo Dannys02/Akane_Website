@@ -318,7 +318,7 @@ html {
   overflow: hidden;
   position: relative;
   z-index: 1;
-  padding: 5px;
+  padding: 3px;
 }
 
 .card:hover .card-image img {

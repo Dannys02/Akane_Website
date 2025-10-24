@@ -36,4 +36,10 @@ const akaneBtn = document.getElementById('card-akane');
 
 akaneBtn.addEventListener('click', function () {
   alert('Tombol ini berfungsi');
-})
+});
+
+const saitoBtn = document.getElementById('card-saito');
+// const akaneBtn = document.getElementById('card-akane');
+const shiseiBtn = document.getElementById('card-shisei');
+const mahoBtn = document.getElementById('card-maho');
+const himariBtn = document.getElementById('card-himari');
