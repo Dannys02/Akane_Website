@@ -9,16 +9,17 @@ const observer = new IntersectionObserver(
           }, 2000);
         } else {
           entry.target.classList.add("show");
+          entry.target.classList.add("khusus-card-model");
         }
       } else {
         entry.target.classList.remove("show");
+        entry.target.classList.remove("khusus-card-model");
       }
     });
-  },
-  { threshold: 0.1 }
+  }, { threshold: 0 }
 );
 
-document.querySelectorAll(".from-top, .from-bottom, .from-out, .from-left").forEach((el) => {
+document.querySelectorAll(".from-top, .from-bottom, .from-out, .from-left, .from-bottom-card, .from-bottom-model").forEach((el) => {
   observer.observe(el);
 });
 
@@ -32,14 +33,26 @@ if (containers[1]) containers[1].appendChild(ScrollAnimationReverse);
 
 
 //Click card about function
-const akaneBtn = document.getElementById('card-akane');
-
-akaneBtn.addEventListener('click', function () {
-  alert('Tombol ini berfungsi');
-});
-
 const saitoBtn = document.getElementById('card-saito');
-// const akaneBtn = document.getElementById('card-akane');
+const akaneBtn = document.getElementById('card-akane');
 const shiseiBtn = document.getElementById('card-shisei');
 const mahoBtn = document.getElementById('card-maho');
 const himariBtn = document.getElementById('card-himari');
+
+const xBtn = document.querySelector(".close-btn");
+const modalSaito = document.getElementById("saito-modal");
+
+const sections = document.getElementsByTagName('section');
+
+
+saitoBtn.addEventListener('click', () => {
+  modalSaito.classList.toggle('active');
+  for (let sec of sections) sec.classList.toggle('active');
+  document.documentElement.style.overflowY = 'hidden';
+});
+
+xBtn.addEventListener('click', function() {
+  modalSaito.classList.remove('active');
+  for (let sec of sections) sec.classList.remove('active');
+  document.documentElement.style.overflowY = 'auto';
+});

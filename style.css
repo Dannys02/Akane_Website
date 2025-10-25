@@ -50,10 +50,10 @@ html {
 }
 
 .from-left {
-  transform: translateX(-25%);
+  transform: translateX(-30px);
   opacity: 0;
-  filter: blur(5px);
-  transition: all 1s ease;
+  filter: blur(20px);
+  transition: transform 1s ease, opacity 2s ease, filter 1s ease;
 }
 
 .from-left.show {
@@ -62,6 +62,61 @@ html {
   filter: blur(0);
 }
 
+.from-bottom-card {
+  transform: translateY(30px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.from-bottom-card.khusus-inner-img {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.from-bottom-model {
+  transform: translateY(30px);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.from-bottom-model.khusus-card-model {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Kurangi lag animation */
+.from-top,
+.from-bottom,
+.from-out,
+.from-left {
+  will-change: transform, opacity, filter;
+}
+
+.inner-img {
+  will-change: transform;
+}
+
+.card-image img {
+  will-change: transform;
+}
+
+.scroll-infinite,
+.scroll-infinite-right {
+  will-change: transform;
+}
+
+.animasi-rotate {
+  will-change: transform;
+}
+
+.container-hero h1 {
+  will-change: transform;
+}
+
+/* HEADER */
 .header-main {
   background: rgba(176, 104, 77, 0.6);
   position: fixed;
@@ -116,14 +171,14 @@ html {
 /* HERO SECTION */
 .container-hero {
   position: relative;
-  height: 100vh;
+  height: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-
 }
 
 .container-hero::after {
@@ -151,7 +206,7 @@ html {
   text-align: center;
   position: relative;
   top: -15%;
-
+  
   font-family: "Bitcount Grid Single", system-ui;
   font-optical-sizing: auto;
   font-style: normal;
@@ -160,7 +215,7 @@ html {
     "CRSV" 0.5,
     "ELSH" 0,
     "ELXP" 0;
-
+  
   margin: 0;
   z-index: 3;
 }
@@ -208,7 +263,7 @@ html {
   font-size: 3.5rem;
   position: relative;
   width: fit-content;
-
+  
   font-family: "Crimson Text", serif;
   font-weight: 700;
   font-style: italic;
@@ -237,21 +292,21 @@ html {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-left 120s linear infinite;
+  animation: scroll-left 80s linear infinite;
 }
 
 .scroll-infinite-right {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-right 60s linear infinite;
+  animation: scroll-right 40s linear infinite;
 }
 
 @keyframes scroll-left {
   from {
     transform: translateX(0);
   }
-
+  
   to {
     transform: translateX(-50%);
   }
@@ -261,7 +316,7 @@ html {
   from {
     transform: translateX(-50%);
   }
-
+  
   to {
     transform: translateX(0);
   }
@@ -278,11 +333,6 @@ html {
   color: white;
   font-size: 24px;
   cursor: pointer;
-  transition: transform 0.5s ease;
-}
-
-.inner-img:hover {
-  transform: scale(1.08);
 }
 
 .inner-img img {
@@ -291,9 +341,14 @@ html {
   width: 100%;
   object-fit: cover;
   object-position: top;
+  transition: transform 0.5s ease;
 }
 
-/* About */
+.inner-img img:hover {
+  transform: scale(1.08);
+}
+
+/* ABOUT */
 .about {
   padding: 2rem 1rem;
   display: flex;
@@ -304,15 +359,16 @@ html {
 .container-about {
   padding: 2rem 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
+  position: relative;
   gap: 3rem;
 }
 
 .card {
   width: 260px;
-  background: black;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
@@ -342,7 +398,7 @@ html {
   from {
     transform: translate(-50%, -50%) rotate(0);
   }
-
+  
   to {
     transform: translate(-50%, -50%) rotate(360deg);
   }
@@ -397,4 +453,181 @@ html {
 
 .card-mark span:hover {
   background: rgba(255, 255, 255, 0.10);
+}
+
+/* MODEL CARD */
+.modal {
+  position: fixed;
+  top: 38%;
+  left: 0;
+  right: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 100;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.modal.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+section {
+  transition: all 0.3s ease;
+}
+
+section.active {
+  filter: blur(10px);
+}
+
+.container-modal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 2rem 2.5rem;
+  color: white;
+  margin: 0 2.5rem;
+  backdrop-filter: blur(20px);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  right: 45px;
+  top: 20px;
+  width: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.image img:hover {
+  transform: scale(1.04);
+}
+
+.info {
+  flex: 1.2;
+}
+
+.info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.info h4 {
+  font-weight: 400;
+  color: #f0c674;
+  margin-bottom: 1rem;
+}
+
+.info p {
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.container-btn {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  border-radius: 7px;
+  transition: all 0.3s ease;
+}
+
+.container-btn:hover {
+  transform: scale(1.1);
+}
+
+.rotate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 65%;
+  z-index: 2;
+  background: linear-gradient(135deg, #6670ff, #ff5eff);
+  animation: rotate 3s infinite linear;
+}
+
+.btn {
+  background: rgb(87, 0, 201);
+  color: white;
+  height: 35px;
+  width: 120px;
+  margin: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  position: relative;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.3s ease;
+}
+
+.btn span {
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .container-modal {
+    flex-direction: column;
+    text-align: center;
+    padding-inline: 1.5rem;
+    padding-top: 5rem;
+  }
+  
+  .image {
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .info h2 {
+    font-size: 1.6rem;
+  }
+  
+  .info p {
+    font-size: 0.9rem;
+  }
 }
