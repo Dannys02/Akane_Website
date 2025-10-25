@@ -56,3 +56,12 @@ xBtn.addEventListener('click', function() {
   for (let sec of sections) sec.classList.remove('active');
   document.documentElement.style.overflowY = 'auto';
 });
+
+// Hapus tanpa sentuh tanda silang
+document.addEventListener('click', (e) => {
+  if (!modalSaito.contains(e.target) && !saitoBtn.contains(e.target)) {
+    modalSaito.classList.remove('active');
+    for (let sec of sections) sec.classList.remove('active');
+    document.documentElement.style.overflowY = 'auto';
+  }
+});

@@ -8,7 +8,7 @@ body,
 html {
   overflow-x: hidden;
   width: 100%;
-  background: black;
+  background: #09000F;
 }
 
 .from-top {
@@ -184,7 +184,7 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 90%, black 100%);
+  background: linear-gradient(to bottom, transparent 90%, #09000F 100%);
   z-index: 6;
   pointer-events: none;
 }
@@ -291,14 +291,14 @@ html {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-left 120s linear infinite;
+  animation: scroll-left 160s linear infinite;
 }
 
 .scroll-infinite-right {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-right 60s linear infinite;
+  animation: scroll-right 80s linear infinite;
 }
 
 @keyframes scroll-left {
@@ -458,9 +458,12 @@ html {
 .modal {
   width: 90%;
   z-index: 100;
-  transform:  translate(-50%, -50%) scale(0);
-  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
   transition: all 0.3s ease;
+  will-change: transform;
 }
 
 .modal.active {
@@ -468,10 +471,10 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
 }
 
 section {
+  background: transparent;
   transition: all 0.3s ease;
 }
 
@@ -574,7 +577,7 @@ section.active {
   height: 65%;
   z-index: 2;
   background: linear-gradient(135deg, #6670ff, #ff5eff);
-  animation: rotate 3s infinite linear;
+  animation: rotate 5s infinite linear;
 }
 
 .btn {
