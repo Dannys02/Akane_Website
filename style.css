@@ -291,14 +291,14 @@ html {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-left 160s linear infinite;
+  animation: scroll-left 200s linear infinite;
 }
 
 .scroll-infinite-right {
   display: inline-flex;
   gap: 25px;
   white-space: nowrap;
-  animation: scroll-right 80s linear infinite;
+  animation: scroll-right 100s linear infinite;
 }
 
 @keyframes scroll-left {

@@ -23,7 +23,7 @@ document.querySelectorAll(".from-top, .from-bottom, .from-out, .from-left, .from
   observer.observe(el);
 });
 
-// Smooth animation scroll
+// Clone untuk scroll tapi jangan observe
 const ScrollAnimation = document.querySelector(".scroll-infinite").cloneNode(true);
 const ScrollAnimationReverse = document.querySelector(".scroll-infinite-right").cloneNode(true);
 
